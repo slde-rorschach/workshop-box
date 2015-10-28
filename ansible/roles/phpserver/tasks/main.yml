@@ -1,0 +1,70 @@
+---
+- name: set locale to us english
+  sudo: true
+  locale_gen: name=en_US.UTF-8 state=present
+
+- name: add php ppa
+  sudo: true
+  apt_repository: repo='ppa:ondrej/php5-5.6'
+
+- name: install packages
+  apt: name={{ item }} state=latest # update_cache=yes
+  sudo: true
+  with_items:
+    - git
+    - php5
+    - php5-intl
+    - php5-xdebug
+    - php5-cli
+    - php5-curl
+    - php5-gd
+    - php5-mysql
+    - apache2
+    - acl
+    - curl
+    - mysql-server
+    - ant
+    - sendmail
+
+- name: enable apache rewrite module
+  sudo: true
+  apache2_module: state=present name=rewrite
+
+- name: remove apache default config
+  file: path={{ item }} state=absent
+  sudo: true
+  with_items:
+    - "/etc/apache2/sites-enabled/000-default.conf"
+    - "/etc/apache2/sites-enabled/default"
+
+- name: include vhost
+  include: vhost.yml
+
+- name: php datetime setting
+  sudo: true
+  lineinfile: dest={{ item }} line=date.timezone="Europe/Berlin"
+  with_items:
+    - '/etc/php5/apache2/php.ini'
+    - '/etc/php5/cli/php.ini'
+
+- name: php xdebug nesting level
+  sudo: true
+  lineinfile: dest={{ item }} line=xdebug.max_nesting_level=256
+  with_items:
+    - '/etc/php5/apache2/php.ini'
+    - '/etc/php5/cli/php.ini'
+
+- name: install composer
+  sudo: true
+  shell: curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  args:
+    creates: /usr/local/bin/composer
+
+- name: ensure mysql is running
+  sudo: true
+  service: name=mysql state=started
+
+- name: restart apache # should be at the end ;)
+  sudo: true
+  service: name=apache2 state=restarted
+

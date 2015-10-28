@@ -1,0 +1,41 @@
+---
+- name: install user packages with apt
+  sudo: true
+  when: ansible_distribution == "Ubuntu"
+  apt: name={{ item }} state=latest
+  with_items:
+    - zsh
+    - git
+
+- name: setup user shell to zsh
+  sudo: true
+  user: name={{ username }} shell="/bin/zsh"
+
+# shell
+- name: setup dotfiles
+  copy: src=dotfiles/ dest={{ userhome }}/
+
+- name: checkout oh my zsh
+  git: repo=git://github.com/robbyrussell/oh-my-zsh.git dest={{ userhome }}/.oh-my-zsh accept_hostkey=yes
+
+- name: set .zshrc
+  template: src=zshrc.j2 dest={{ userhome }}/.zshrc
+
+- name: copy zsh theme
+  copy: src=ko.zsh-theme dest={{ userhome }}/.oh-my-zsh/custom/ko.zsh-theme
+
+- name: activate zsh theme in config
+  lineinfile: dest={{ userhome }}/.zshrc line=ZSH_THEME="ko" regexp=^ZSH_THEME=
+
+# git
+- name: setup global gitignore for user
+  shell: git config --global core.excludesfile '~/.gitignore'
+
+- name: setup git simple push behavior
+  shell: git config --global push.default simple
+
+- name: setup git user
+  shell: git config --global user.name "{{ git_username | default('torben') }}"
+
+- name: setup git email
+  shell: git config --global user.email "{{ git_usermail | default('torben@test.er') }}"

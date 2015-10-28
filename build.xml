@@ -1,0 +1,16 @@
+<project name="lukas.sadzik.net" default="deploy" basedir=".">
+  <description>
+    nest tasks
+</description>
+<!-- set global properties for this build -->
+<property name="project_name" value="nest" />
+
+<target name="ansible">
+  <exec executable="ansible-playbook" failonerror="true">
+    <env key="ANSIBLE_HOST_KEY_CHECKING" value="false"/>
+    <arg line="--inventory-file=ansible/hosts" />
+    <arg line="-vvvv" />
+    <arg value="ansible/sulu.yml" />
+</exec>
+</target>
+</project>
