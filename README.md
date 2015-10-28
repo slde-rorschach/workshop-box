@@ -16,7 +16,7 @@ On your host system:
 
 ```bash
 git clone https://github.com/slde-rorschach/snb.git
-mkdir neos # needed for shared folder
+mkdir sulu # needed for shared folder
 cd snb
 vagrant up
 ant ansible
