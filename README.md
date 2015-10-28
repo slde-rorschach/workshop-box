@@ -37,7 +37,7 @@ Use `localhost` or `127.0.0.1` as host.
 
 ## Want to use git inside the box?
 
-You can edit `ansible/host_vars/neos.local.yml` to your needs.
+You can edit `ansible/host_vars/sulu.local.yml` to your needs.
 There a two keys `git_username` and `git_usermail`, where you can place your own values.
 Do not forget to run `ant ansible` ;)
 
