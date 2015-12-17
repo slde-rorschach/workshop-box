@@ -1,5 +1,5 @@
 ---
-- hosts: sulu.local
+- hosts: all
   roles: 
     - phpserver
     - user

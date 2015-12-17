@@ -6,7 +6,7 @@ box_name            = "ubuntu/trusty64"
 box_ip              = "192.168.19.21" 
 host_name           = "sulu.local"
 
-synced_folder_host  = "../sulu"
+synced_folder_host  = "../drupal8"
 synced_folder_guest = "/home/vagrant/share"
 
 box_memory          = "2048"
