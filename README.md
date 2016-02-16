@@ -1,4 +1,4 @@
-# Simple sulu devbox
+# Simple drupal devbox
 
 ## requirements
 
@@ -12,11 +12,11 @@
 
 On your host system:
 
-- add `192.168.19.21 sulu.local` to your `/etc/hosts`
+- add `192.168.19.21 drupal.local` to your `/etc/hosts`
 
 ```bash
 git clone https://github.com/slde-rorschach/snb.git
-mkdir sulu # needed for shared folder
+mkdir drupal # needed for shared folder
 cd snb
 vagrant up
 ant ansible
@@ -28,7 +28,7 @@ in your box (`vagrant ssh`):
 cd ~/share
 ```
 
-Then follow the [Sulu installation guide](docs.sulu.io/en/latest/book/getting-started/installation.html)
+Then follow the [drupal installation guide](docs.drupal.io/en/latest/book/getting-started/installation.html)
 
 ## MySQL info
 
@@ -37,7 +37,7 @@ Use `localhost` or `127.0.0.1` as host.
 
 ## Want to use git inside the box?
 
-You can edit `ansible/host_vars/sulu.local.yml` to your needs.
+You can edit `ansible/host_vars/drupal.local.yml` to your needs.
 There a two keys `git_username` and `git_usermail`, where you can place your own values.
 Do not forget to run `ant ansible` ;)
 

@@ -3,13 +3,13 @@
 
 # settings
 box_name            = "ubuntu/trusty64"
-box_ip              = "192.168.19.21" 
-host_name           = "sulu.local"
+box_ip              = "192.167.3.5" 
+host_name           = "drupal8.local"
 
 synced_folder_host  = "../drupal8"
 synced_folder_guest = "/home/vagrant/share"
 
-box_memory          = "2048"
+box_memory          = "4096"
 nfs                 = true
 gui                 = false
 
@@ -34,4 +34,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
 
     config.vm.synced_folder synced_folder_host, synced_folder_guest, id: "vagrant-share", :nfs => nfs
+
 end
