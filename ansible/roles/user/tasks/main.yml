@@ -1,6 +1,6 @@
 ---
 - name: install user packages with apt
-  sudo: true
+  become: true
   when: ansible_distribution == "Ubuntu"
   apt: name={{ item }} state=latest
   with_items:
@@ -8,7 +8,7 @@
     - git
 
 - name: setup user shell to zsh
-  sudo: true
+  become: true
   user: name={{ username }} shell="/bin/zsh"
 
 # shell

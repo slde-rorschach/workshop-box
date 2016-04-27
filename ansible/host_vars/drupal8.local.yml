@@ -1,9 +1,0 @@
----
-hostname: drupal8.local
-username: vagrant
-userhome: /home/vagrant
-usergroup: vagrant
-document_root: /home/vagrant/share
-zsh_plugin: "git"
-git_username: "Lukas Sadzik"
-git_usermail: "lukas@sadzik@sensiolabs.de"

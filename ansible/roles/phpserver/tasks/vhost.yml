@@ -1,6 +1,6 @@
 ---
 
 - name: install vhost template
-  sudo: true
+  become: true
   template: src=simple_vhost.conf.j2 dest=/etc/apache2/sites-enabled/{{ hostname }}.conf
 

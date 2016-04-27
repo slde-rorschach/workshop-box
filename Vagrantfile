@@ -3,10 +3,10 @@
 
 # settings
 box_name            = "ubuntu/trusty64"
-box_ip              = "192.167.3.5" 
-host_name           = "drupal8.local"
+box_ip              = "192.167.4.21" 
+host_name           = "workshop.box"
 
-synced_folder_host  = "../drupal8"
+synced_folder_host  = "./share"
 synced_folder_guest = "/home/vagrant/share"
 
 box_memory          = "4096"
