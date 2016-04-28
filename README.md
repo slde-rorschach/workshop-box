@@ -42,5 +42,3 @@ There a two keys `git_username` and `git_usermail`, where you can place your own
 Do not forget to run `ant ansible` ;)
 
 ## Questions?
-
-Ask me! lukas.sadzik@ext.chefkoch.de
