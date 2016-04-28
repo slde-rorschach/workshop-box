@@ -1,0 +1,9 @@
+---
+hostname: workshop.box
+username: vagrant
+userhome: /home/vagrant
+usergroup: vagrant
+document_root: /home/vagrant/share/Hangman/web
+zsh_plugin: "git"
+git_username: "Lukas Sadzik"
+git_usermail: "lukas@sadzik@sensiolabs.de"
