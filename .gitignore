@@ -1,3 +1,4 @@
 vagrant-share/
 packer_cache/
 share/
+!share/.gitkeep
